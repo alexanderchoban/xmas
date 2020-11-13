@@ -23,7 +23,9 @@
     "url": "https://github.com/alexanderchoban/xmas/issues"
   },
   "homepage": "https://github.com/alexanderchoban/xmas#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "devDependencies": {
     "node-dev": "^6.2.0"
   }

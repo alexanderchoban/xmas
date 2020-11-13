@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Merry Xmas</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p id="status">Click below to play</p>
+    <div id="musicContainer"><audio controls preload="all" id="music"></div>
+    </audio>
+    <button onclick="syncAudio()">Sync and Play</button>
+    <script>
+        var request = new XMLHttpRequest();
+        request.open("GET", "/api/play", true);
+        request.responseType = "blob";    
+        request.onload = function() {
+            if (this.status == 200) {
+                var audio = new Audio(URL.createObjectURL(this.response));
+                audio.load();
+                $('audio#music').replaceWith(audio)
+            }
+        }
+        request.send();
+
+        function syncAudio() {
+            var audio = $('#musicContainer audio')[0];
+            var status = $('p#status');
+            status.text('Syncing...');
+
+            $.get( "/api/play/time", function( time ) {
+                audio.currentTime = time;
+                audio.play();
+                status.text('Playing at ' + time)
+            });
+            
+        }
+    </script>
+</body>

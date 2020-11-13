@@ -1,0 +1,30 @@
+{
+  "name": "xmas",
+  "version": "1.0.0",
+  "description": "Controls xmas lights",
+  "main": "xmas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node-dev xmas.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderchoban/xmas.git"
+  },
+  "keywords": [
+    "xmas",
+    "lights",
+    "holiday",
+    "season"
+  ],
+  "author": "Alexander Choban",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexanderchoban/xmas/issues"
+  },
+  "homepage": "https://github.com/alexanderchoban/xmas#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "node-dev": "^6.2.0"
+  }
+}

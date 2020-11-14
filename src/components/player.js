@@ -3,11 +3,15 @@ import { Typography, Grid, Button, LinearProgress } from "@material-ui/core"
 import { AudioContext } from "../provider"
 
 const formatTime = seconds =>
-  `${Math.floor(seconds / 60)}:${(Math.floor(seconds % 60) + '').padStart(2,'0')}`
+  `${Math.floor(seconds / 60)}:${(Math.floor(seconds % 60) + "").padStart(
+    2,
+    "0"
+  )}`
 
 const Player = () => {
   const [date, setDate] = useState()
-  const { audio } = useContext(AudioContext)
+  const context = useContext(AudioContext)
+  const audio = (context && context.audio) ? context.audio : null
 
   useEffect(() => {
     if (audio && !audio.readyState) {
@@ -67,8 +71,12 @@ const Player = () => {
       />
       {audio && (
         <Grid container>
-          <Grid item xs={6}>{formatTime(audio.currentTime)}</Grid>
-          <Grid item align="right" xs={6}>{formatTime(audio.duration)}</Grid>
+          <Grid item xs={6}>
+            {formatTime(audio.currentTime)}
+          </Grid>
+          <Grid item align="right" xs={6}>
+            {formatTime(audio.duration)}
+          </Grid>
         </Grid>
       )}
 

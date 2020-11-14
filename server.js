@@ -16,9 +16,7 @@ const timer = () => {
 
 setInterval(timer, 1000)
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+app.use(express.static('public'))
 
 app.get('/api/play/time', (req, res) => {
   res.statusCode = 200;
@@ -76,5 +74,5 @@ app.get('/api/play', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Xmas Lights Server at http://localhost:${port}`)
 })

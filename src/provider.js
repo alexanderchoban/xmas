@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from "react"
 
-export const AudioContext = React.createContext();
+export const AudioContext = React.createContext()
 
 const Provider = props => {
-  const [audio, setAudio] = useState(new Audio());
+  const [audio, setAudio] = useState(new Audio())
 
   return (
-    <AudioContext.Provider value={{
+    <AudioContext.Provider
+      value={{
         audio,
-        setAudio
-    }}>
+        setAudio,
+      }}
+    >
       {props.children}
     </AudioContext.Provider>
   )
-};
+}
 
-export default ({ element }) => (
-    <Provider>
-      {element}
-    </Provider>
-  );
+export default ({ element }) => <Provider>{element}</Provider>

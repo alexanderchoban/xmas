@@ -11,7 +11,7 @@ const formatTime = seconds =>
 const Player = () => {
   const [date, setDate] = useState()
   const context = useContext(AudioContext)
-  const audio = (context && context.audio) ? context.audio : null
+  const audio = context && context.audio ? context.audio : null
 
   useEffect(() => {
     if (audio && !audio.readyState) {

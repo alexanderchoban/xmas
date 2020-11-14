@@ -4,11 +4,12 @@ module.exports = {
     url: "http://localhost:3000",
   },
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Chrismast Light Show`,
+    description: `Kickback and enjoy the light show`,
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

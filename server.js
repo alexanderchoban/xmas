@@ -5,29 +5,27 @@ const app = express()
 const port = 3000
 const songLength = 72 // in seconds
 
-let curPlaytime = 0
+let currentPlaytime = 0
 
 const timer = () => {
-  if(curPlaytime < songLength)
-    curPlaytime++;
+  if(currentPlaytime < songLength)
+    currentPlaytime++;
   else
-    curPlaytime = 0
+    currentPlaytime = 0
 }
 
 setInterval(timer, 1000)
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+app.use(express.static('public'))
 
 app.get('/api/play/time', (req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain')
-  res.end(`${curPlaytime}\n`)
+  res.setHeader('Content-Type', 'application/json')
+  res.end(JSON.stringify({ currentPlaytime, serverTime: Date.now() }))
 })
 
 app.get('/api/play', (req, res) => {
-  var music = path.join('music.mp3');
+  var music = path.join('music','buffy.mp3');
   var stat = fs.statSync(music);
   var range = req.headers.range;
   var readStream;
@@ -76,5 +74,5 @@ app.get('/api/play', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Xmas Lights Server at http://localhost:${port}`)
 })
